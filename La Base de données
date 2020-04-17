@@ -40,11 +40,6 @@ CREATE TABLE `client` (
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`email`, `password`, `nom`, `prenom`, `telephone`) VALUES
-('ayoub.greenboy@gmail.com', '123456', 'MansourBillah', 'Ayoub', 678353166),
-('toto@cocomail.com', 'gj', 'khkj', 'kjhkj', 678358899),
-('abdellah.birouk@gmail.com', '123456', 'Birouk', 'Abdellah', 678356631);
-
 -- --------------------------------------------------------
 
 --
