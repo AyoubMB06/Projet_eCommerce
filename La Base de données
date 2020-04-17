@@ -94,6 +94,30 @@ INSERT INTO `produit` (`numProd`, `nomProd`, `prix`, `image`) VALUES
 (7, 'Bonnet', 99, 'img/x7.jpg'),
 (8, 'Cachecol', 50, 'img/x8.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentairesClient`
+--
+
+CREATE TABLE `commentairesClient` (
+  `id` int(11) NOT NULL,
+  `nomClient` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `emailClient` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `sujetClient` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `Message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `commentairesClient`
+--
+
+INSERT INTO `commentairesClient` (`id`, `nomClient`, `emailClient`, `sujetClient`, `Message`) VALUES
+(1, 'fazfaz', 'ayoub.greenboy@gmail.com', 'Avis', 'Très bien'),
+(2, 'Anass', 'anass.mancour@gmail.com', 'test', 'Très bon site');
+
+-- --------------------------------------------------------
+
 --
 -- Index pour les tables déchargées
 --
