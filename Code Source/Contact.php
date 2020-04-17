@@ -115,19 +115,19 @@ if (isset($_REQUEST['nom'], $_REQUEST['email'], $_REQUEST['sujet'], $_REQUEST['m
                 <div id="errormessage"></div>
                 <form action="#" method="POST">
                   <div class="form-group">
-                    <input type="text" name="nom" class="form-control" id="name" placeholder="Nom" data-rule="minlen:4" data-msg="Entrez au moins 4 caractères" />
+                    <input type="text" name="nom" class="form-control" id="name" placeholder="Nom" data-rule="minlen:4" data-msg="Entrez au moins 4 caractères" required/>
                     <div class="validation"></div>
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Entrez un email valide" />
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Entrez un email valide" required/>
                     <div class="validation"></div>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="sujet" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Entrez au moins 8 caractères à propos du sujet" />
+                    <input type="text" class="form-control" name="sujet" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Entrez au moins 8 caractères à propos du sujet" required/>
                     <div class="validation"></div>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Ecrivez quelque chose pour nous" placeholder="Message"></textarea>
+                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Ecrivez quelque chose pour nous" placeholder="Message" required/></textarea>
                     <div class="validation"></div>
                   </div>
                   <div class="text-center">
