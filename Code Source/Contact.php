@@ -1,6 +1,26 @@
-<?php 
+<?php
+session_start();
+require('config.php');
 
-session_start(); 
+
+if (isset($_REQUEST['nom'], $_REQUEST['email'], $_REQUEST['sujet'], $_REQUEST['message'])){
+
+    //supprimer les antislashes ajoutés par le formulaire
+    $nom = stripslashes($_REQUEST['nom']);
+    $nom = mysqli_real_escape_string($BD, $nom);
+    $email = stripslashes($_REQUEST['email']); 
+    $email = mysqli_real_escape_string($BD, $email);
+    $sujet = stripslashes($_REQUEST['sujet']);
+    $sujet = mysqli_real_escape_string($BD, $sujet);
+    $message = stripslashes($_REQUEST['message']);
+    $message = mysqli_real_escape_string($BD, $message);
+    
+
+    $query = "INSERT into `commentairesClient` ( nomClient ,  emailClient ,  sujetClient , Message) 
+              VALUES ('$nom', '$email', '$sujet', '$message')";
+    mysqli_query($BD,$query);
+
+}
 
 ?>
 
@@ -41,12 +61,12 @@ session_start();
                 ?>  
                 <ul>
                   <li><a href="panier.php">Mon Panier</a></li>
-                  <li><a href="logout.php">Se déconnecter</a></li>
+                  <li><a href="logout.php" style="color:red;"><b>Se déconnecter</b></a></li>
                 </ul>
                 <?php } 
                     else{   ?>  
                 <ul>
-                  <li><a href="login.php">Se connecter</a></li>
+                  <li><a href="login.php" style="color:green;"><b>Se connecter</b></a></li>
                   <li><a href="panier.php">Mon Panier</a></li>
                 </ul>
                 <?php } ?>
@@ -93,9 +113,9 @@ session_start();
               <div class="form">
                 <div id="sendmessage">Ton message a été envoyé, Merci!</div>
                 <div id="errormessage"></div>
-                <form action="#" method="GET">
+                <form action="#" method="POST">
                   <div class="form-group">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Nom" data-rule="minlen:4" data-msg="Entrez au moins 4 caractères" />
+                    <input type="text" name="nom" class="form-control" id="name" placeholder="Nom" data-rule="minlen:4" data-msg="Entrez au moins 4 caractères" />
                     <div class="validation"></div>
                   </div>
                   <div class="form-group">
@@ -103,14 +123,16 @@ session_start();
                     <div class="validation"></div>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Entrez au moins 8 caractères à propos du sujet" />
+                    <input type="text" class="form-control" name="sujet" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Entrez au moins 8 caractères à propos du sujet" />
                     <div class="validation"></div>
                   </div>
                   <div class="form-group">
                     <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Ecrivez quelque chose pour nous" placeholder="Message"></textarea>
                     <div class="validation"></div>
                   </div>
-                  <div class="text-center"><button type="submit">Envoyez le commentaire</button></div>
+                  <div class="text-center">
+                      <button type="submit">Envoyez le commentaire</button>
+                  </div>
                 </form>
               </div>
             </div>
