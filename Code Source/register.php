@@ -74,6 +74,17 @@ if (isset($_REQUEST['email'], $_REQUEST['password'], $_REQUEST['nom'], $_REQUEST
         else 
             return false;
     }
+    
+    function verifPassword($password){
+	if(preg_match("/.{8,}/im", $password)){
+		if(preg_match("/[A-Z]+/im", $password)){
+				if(preg_match("/[0-9]+/im", $password)){
+					return true;
+				    }
+    			}
+    		}
+    		return false;
+    }
 
     function verifTelephone($telephone){
         if(preg_match("/^06[0-9]{8}$/im", $telephone))
@@ -83,7 +94,7 @@ if (isset($_REQUEST['email'], $_REQUEST['password'], $_REQUEST['nom'], $_REQUEST
     }
 
 
-    if(verifEmail($email) && verifTelephone($telephone)){
+    if(verifEmail($email) && verifTelephone($telephone) && verifPassword($password)){
 
         $email_deja = "select * from client where email = '$email'";
         $telephone_deja = "select * from client where telephone = '$telephone'";
@@ -106,17 +117,19 @@ if (isset($_REQUEST['email'], $_REQUEST['password'], $_REQUEST['nom'], $_REQUEST
         }
 
     }else{
-        if(verifEmail($email)){
+        if(verifEmail($email) && verifPassword($password)){
             $verifTelephone_message="Veuillez entrer un numéro de téléphone valide."; 
         }
+        elseif(verifTelephone($telephone) && verifPassword($password))
+            $verifEmail_message="Veuillez entrer une adresse e-mail valide."; 
         else
-            $verifEmail_message="Veuillez entrer une adresse e-mail valide.";  
+            $verifPassword_message="Veuillez entrer une mot de passe valide, avec au moins 8 caractères, une lettre en majuscule et un chiffre";
     }
     
+}
 
 
-
-    }
+    
     ?>
       <div id="container">
             
@@ -143,7 +156,10 @@ if (isset($_REQUEST['email'], $_REQUEST['password'], $_REQUEST['nom'], $_REQUEST
                 
                 <?php if (! empty($verifEmail_message)) { ?>
                     <p class="errorMessage"><?php echo $verifEmail_message; ?></p>
-                <?php }else if(! empty($verifTelephone_message)) { ?>
+                <?php }elseif(! empty($verifPassword_message)) { ?>
+                    <p class="errorMessage"><?php echo $verifPassword_message; ?></p>
+                <?php } ?>
+                <?php if(! empty($verifTelephone_message)) { ?>
                     <p class="errorMessage"><?php echo $verifTelephone_message; ?></p>
                 <?php } ?>
                 <?php if (! empty($verifEmail_already)) { ?>

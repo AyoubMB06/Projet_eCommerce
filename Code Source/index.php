@@ -71,7 +71,7 @@ session_start();
           <p class="subscribe-text">Rejoignez nos +1000 abonnés et accédez aux derniers outils, cadeaux, annonces de produits et bien plus encore!</p>
         </div>
         <div class="col-md-4 subscribe-btn-container">
-          <a class="subscribe-btn" href="#">Abonnez-vous maintenant!</a>
+          <a class="subscribe-btn" href="Rapport_site_eCommerce_MançourBillah_Ayoub.pdf" download>Cliquez-ici pour telecharger le rapport</a>
         </div>
       </div>
     </div>
@@ -105,6 +105,7 @@ session_start();
                   else{   ?>  
               <ul>
                 <li><a href="login.php" style="color:green;"><b>Se connecter</b></a></li>
+                <li><a href="register.php" style="color:black;"><b>S'inscrire</b></a></li>
                 <li><a href="panier.php">Mon Panier</a></li>
               </ul>
               <?php } ?>
