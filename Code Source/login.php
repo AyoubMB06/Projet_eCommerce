@@ -69,7 +69,7 @@ session_start();
           $_SESSION["session_login"] = $email;
           header("Location: index.php");
       }else{
-        $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+        $message = "Nom d'utilisateur ou mot de passe incorrect.";
       }
     }
 ?>
