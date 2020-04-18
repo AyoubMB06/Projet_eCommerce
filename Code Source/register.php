@@ -123,7 +123,7 @@ if (isset($_REQUEST['email'], $_REQUEST['password'], $_REQUEST['nom'], $_REQUEST
         elseif(verifTelephone($telephone) && verifPassword($password))
             $verifEmail_message="Veuillez entrer une adresse e-mail valide."; 
         else
-            $verifPassword_message="Veuillez entrer une mot de passe valide, avec au moins 8 caractères, une lettre en majuscule et un chiffre";
+            $verifPassword_message="Veuillez entrer un mot de passe valide, avec au moins 8 caractères, une lettre en majuscule et un chiffre.";
     }
     
 }
